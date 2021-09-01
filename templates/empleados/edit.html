@@ -1,3 +1,4 @@
+{% include 'header.html' %}
 {% for empleado in empleados %}
 
 <form method="post" action="/update" enctype="multipart/form-data">
@@ -14,7 +15,13 @@
     <input type="text" value="{{empleado[2]}}" name="txtCorreo" id="txtCorreo">
     <br>
 
+    Foto:
+    <br>
+    <img class="img-thumbnail" width="100" src= {{url_for('uploads',nombreFoto=empleado[3])}} alt="fotoEmpleado">
+    <br>
+
     Foto: {{empleado[0]}}
+    <!--va type="file"-->
     <input type="file" name="txtFoto" id="txtFoto">
     <br>
     
@@ -27,3 +34,4 @@
     {{empleado[3]}}
     
 {% endfor %}
+{% include 'footer.html' %}

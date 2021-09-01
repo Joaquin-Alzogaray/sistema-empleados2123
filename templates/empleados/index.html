@@ -1,3 +1,9 @@
+{% include 'header.html' %}
+<br>
+<a href="{{url_for('create')}}" class="btn btn-dark"> Ingresar Empleado</a>
+<br>
+<br>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,12 +27,14 @@
             {% for empleado in empleados %}
             <tr>
                 <td>{{empleado[0]}}</td>
-                <td>{{empleado[3]}}</td>
+                <td>
+                    <img class="img-thumbnail" width="100" src="/uploads/{{empleado[3]}}" alt="fotoEmpleado">
+                </td>
                 <td>{{empleado[1]}}</td>
                 <td>{{empleado[2]}}</td>
                 <td> 
-                    <a href="/edit/{{empleado[0]}}">Editar</a> |
-                    <a href="/destroy/{{empleado[0]}}"> Eliminar</a>    
+                    <a class="btn btn-outline-success" href="/edit/{{empleado[0]}}">Editar</a> |
+                    <a onclick="return confirm('¿Confirma eliminar el registro?')" class="btn btn-outline-success" href="/destroy/{{empleado[0]}}"> Eliminar</a>    
                 </td>
             </tr>
             {% endfor %}
@@ -34,3 +42,5 @@
     </table>
 </body>
 </html>
+
+{% include 'footer.html' %}
